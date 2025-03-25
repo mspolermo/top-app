@@ -1,9 +1,11 @@
 import React from 'react';
 
-function Home(){
+function Home(): JSX.Element {
+	const a = 1;
 	return (
 		<div>
-			ТЕСТ
+			<h1>TOP-APP</h1>
+			<p>Powered by {a}</p>
 		</div>
 	);
 }
