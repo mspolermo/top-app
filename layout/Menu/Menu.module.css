@@ -65,7 +65,7 @@
 .thirdLevel {
 	display: block;
 
-	margin-bottom: 10px;
+	margin-bottom: 10px !important;
 
 	cursor: pointer;
 
@@ -74,6 +74,9 @@
 
 	font-size: 14px;
 	font-weight: 500;
+  line-height: 14px;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 
 .thirdLevelActive,
