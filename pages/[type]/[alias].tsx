@@ -8,16 +8,16 @@ import { ParsedUrlQuery } from 'node:querystring';
 import { ProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { API } from '../../helpers/api';
+import { TopPageComponent } from '../../page-components';
 
-function TopPage({ menu, page, products }: TopPageProps): JSX.Element {
+function TopPage({ menu, page, products, firstCategory }: TopPageProps): JSX.Element {
 
-	return (
-		<>
-			{products.map((p) => (
-				<div key={p._id}>{p.title}</div>
-			))}
-		</>
-	);
+	return <TopPageComponent
+		firstCategory={firstCategory}
+		page={page}
+		products={products}
+		
+		/>;
 }
 
 export default withLayout(TopPage);
