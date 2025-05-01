@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Htag, P, Rating, Tag } from '../components';
+import { Button, Htag, Input, P, Rating, Tag } from '../components';
 import { withLayout } from '../layout/Layout';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
@@ -25,6 +25,7 @@ function Home({ menu }: HomeProps): JSX.Element {
 						<li key={m._id.secondCategory}>{m._id.secondCategory}</li>
 					))}
 				</ul>
+				<Input placeholder='test' />
 		</>
 	);
 }
