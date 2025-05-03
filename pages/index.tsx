@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Htag, Input, P, Rating, Tag } from '../components';
+import { Button, Htag, Input, P, Rating, Tag, Textarea } from '../components';
 import { withLayout } from '../layout/Layout';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
@@ -26,6 +26,7 @@ function Home({ menu }: HomeProps): JSX.Element {
 					))}
 				</ul>
 				<Input placeholder='test' />
+				<Textarea placeholder='test' />
 		</>
 	);
 }
