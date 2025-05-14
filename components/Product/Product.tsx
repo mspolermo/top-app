@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import { Review } from '../Review/Review';
 import { motion } from 'framer-motion';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export const Product = motion(forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
@@ -102,6 +103,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 							<Divider />
 						</div>
 					))}
+					<ReviewForm productId={product._id} isOpened={isReviewOpened} />
 				</Card>
 			</motion.div>
 		</div>
