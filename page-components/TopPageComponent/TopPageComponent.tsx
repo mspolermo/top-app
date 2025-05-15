@@ -9,14 +9,14 @@ import { sortReducer } from './sort.reducer';
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
-	
-	useEffect(() => {
-		dispathSort({ type: 'reset', initialState: products });
-	}, [products]);
 
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
 	};
+
+	useEffect(() => {
+		dispathSort({ type: 'reset', initialState: products });
+	}, [products]);
 
 	return (
 		<div className={styles.wrapper}>

@@ -68,15 +68,16 @@
 	margin-bottom: 10px !important;
 
 	cursor: pointer;
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
 
 	color: var(--gray-dark);
 	outline-offset: -1px;
 
 	font-size: 14px;
 	font-weight: 500;
-  line-height: 14px;
-  text-wrap: nowrap;
-  text-overflow: ellipsis;
+
+	line-height: 14px;
 }
 
 .thirdLevelActive,
