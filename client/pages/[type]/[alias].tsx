@@ -1,23 +1,33 @@
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import React from 'react';
 import { withLayout } from '../../layout/Layout';
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import axios from 'axios';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { TopLevelCategory, TopPageModel } from '../../interfaces/page.interface';
-import { ParsedUrlQuery } from 'node:querystring';
 import { ProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
-import { API } from '../../helpers/api';
 import { TopPageComponent } from '../../page-components';
+import { API } from '../../helpers/api';
+import Head from 'next/head';
+import { ParsedUrlQuery } from 'querystring';
 
-function TopPage({ menu, page, products, firstCategory }: TopPageProps): JSX.Element {
+function TopPage({ firstCategory, page, products }: TopPageProps): JSX.Element {
 
-	return <TopPageComponent
-		firstCategory={firstCategory}
-		page={page}
-		products={products}
-		
-		/>;
+
+	return <>
+		<Head>
+			<title>{page.metaTitle}</title>
+			<meta name="description" content={page.metaDescription} />
+			<meta property="og:title" content={page.metaTitle} />
+			<meta property="og:description" content={page.metaDescription} />
+			<meta property="og:type" content="article" />
+		</Head>
+		<TopPageComponent
+			firstCategory={firstCategory}
+			page={page}
+			products={products}
+		/>
+	</>;
 }
 
 export default withLayout(TopPage);
@@ -30,7 +40,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		});
 		paths = paths.concat(menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`)));
 	}
-
 	return {
 		paths,
 		fallback: true
