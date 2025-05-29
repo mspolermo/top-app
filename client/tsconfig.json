@@ -22,7 +22,7 @@
     "incremental": true
   },
   "include": [
-    "next-env-custom.d.ts",
+    "next-env.d.ts",
     "images.d.ts",
     "**/*.ts",
     "**/*.tsx"
