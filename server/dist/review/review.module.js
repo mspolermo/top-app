@@ -6,25 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.ReviewModule = void 0;
 const common_1 = require("@nestjs/common");
-const auth_module_1 = require("./auth/auth.module");
-const top_page_module_1 = require("./top-page/top-page.module");
-const product_module_1 = require("./product/product.module");
-const review_module_1 = require("./review/review.module");
-const config_1 = require("@nestjs/config");
-let AppModule = class AppModule {
+const review_controller_1 = require("./review.controller");
+let ReviewModule = class ReviewModule {
 };
-AppModule = __decorate([
+ReviewModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            config_1.ConfigModule.forRoot(),
-            auth_module_1.AuthModule,
-            top_page_module_1.TopPageModule,
-            product_module_1.ProductModule,
-            review_module_1.ReviewModule
-        ]
+        controllers: [review_controller_1.ReviewController]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], ReviewModule);
+exports.ReviewModule = ReviewModule;
+//# sourceMappingURL=review.module.js.map

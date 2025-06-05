@@ -6,25 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.TopPageModule = void 0;
 const common_1 = require("@nestjs/common");
-const auth_module_1 = require("./auth/auth.module");
-const top_page_module_1 = require("./top-page/top-page.module");
-const product_module_1 = require("./product/product.module");
-const review_module_1 = require("./review/review.module");
-const config_1 = require("@nestjs/config");
-let AppModule = class AppModule {
+const top_page_controller_1 = require("./top-page.controller");
+let TopPageModule = class TopPageModule {
 };
-AppModule = __decorate([
+TopPageModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            config_1.ConfigModule.forRoot(),
-            auth_module_1.AuthModule,
-            top_page_module_1.TopPageModule,
-            product_module_1.ProductModule,
-            review_module_1.ReviewModule
-        ]
+        controllers: [top_page_controller_1.TopPageController]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], TopPageModule);
+exports.TopPageModule = TopPageModule;
+//# sourceMappingURL=top-page.module.js.map
