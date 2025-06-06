@@ -14,4 +14,4 @@ import { ConfigModule } from '@nestjs/config';
 		ReviewModule
 	]
 })
-export class AppModule { }
+export class AppModule { } 
