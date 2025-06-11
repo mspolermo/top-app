@@ -1,5 +1,11 @@
-export declare class ProductModel {
-    _id: string;
+import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
+declare class ProductCharacteristic {
+    name: string;
+    value: string;
+}
+export interface ProductModel extends Base {
+}
+export declare class ProductModel extends TimeStamps {
     image: string;
     title: string;
     price: number;
@@ -10,8 +16,7 @@ export declare class ProductModel {
     advantages: string;
     disAdvantages: string;
     categories: string[];
-    tags: string;
-    characteristics: {
-        [key: string]: string;
-    };
+    tags: string[];
+    characteristics: ProductCharacteristic[];
 }
+export {};

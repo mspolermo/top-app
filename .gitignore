@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/server/mongo-data-4.4
+/server/mongo-data-4.4/
 /.pnp
 .pnp.js
 
