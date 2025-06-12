@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
 const review_controller_1 = require("./review.controller");
 const review_model_1 = require("./review.model");
+const review_service_1 = require("./review.service");
 let ReviewModule = class ReviewModule {
 };
 ReviewModule = __decorate([
@@ -25,7 +26,8 @@ ReviewModule = __decorate([
                     }
                 }
             ])
-        ]
+        ],
+        providers: [review_service_1.ReviewService]
     })
 ], ReviewModule);
 exports.ReviewModule = ReviewModule;

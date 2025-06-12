@@ -14,19 +14,31 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewController = void 0;
 const common_1 = require("@nestjs/common");
+const create_review_dto_1 = require("./dto/create-review.dto");
+const review_constants_1 = require("./review.constants");
+const review_service_1 = require("./review.service");
 let ReviewController = class ReviewController {
+    constructor(reviewService) {
+        this.reviewService = reviewService;
+    }
     async create(dto) {
+        return this.reviewService.create(dto);
     }
     async delete(id) {
+        const deletedDoc = await this.reviewService.delete(id);
+        if (!deletedDoc) {
+            throw new common_1.HttpException(review_constants_1.REVIEW_NOT_FOUND, common_1.HttpStatus.NOT_FOUND);
+        }
     }
     async getByProduct(productId) {
+        return this.reviewService.findByProductId(productId);
     }
 };
 __decorate([
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "create", null);
 __decorate([
@@ -44,7 +56,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "getByProduct", null);
 ReviewController = __decorate([
-    (0, common_1.Controller)('review')
+    (0, common_1.Controller)('review'),
+    __metadata("design:paramtypes", [review_service_1.ReviewService])
 ], ReviewController);
 exports.ReviewController = ReviewController;
 //# sourceMappingURL=review.controller.js.map
