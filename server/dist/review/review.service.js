@@ -30,6 +30,9 @@ let ReviewService = class ReviewService {
     async findByProductId(productId) {
         return this.reviewModel.find({ productId: mongoose_1.Types.ObjectId(productId) }).exec();
     }
+    async deleteByProductId(productId) {
+        return this.reviewModel.deleteMany({ productId: mongoose_1.Types.ObjectId(productId) }).exec();
+    }
 };
 ReviewService = __decorate([
     (0, common_1.Injectable)(),
