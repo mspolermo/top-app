@@ -14,14 +14,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
+const auth_constants_1 = require("./auth.constants");
+const auth_service_1 = require("./auth.service");
 const auth_dto_1 = require("./dto/auth.dto");
 let AuthController = class AuthController {
+    constructor(authService) {
+        this.authService = authService;
+    }
     async register(dto) {
+        const oldUser = await this.authService.findUser(dto.login);
+        if (oldUser) {
+            throw new common_1.BadRequestException(auth_constants_1.ALREADY_REGISTERED_ERROR);
+        }
+        return this.authService.createUser(dto);
     }
     async login(dto) {
     }
 };
 __decorate([
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.Post)('register'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -37,7 +48,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 AuthController = __decorate([
-    (0, common_1.Controller)('auth')
+    (0, common_1.Controller)('auth'),
+    __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;
 //# sourceMappingURL=auth.controller.js.map
