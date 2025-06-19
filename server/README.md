@@ -37,3 +37,26 @@ curl --request GET \
   --url http://localhost:3000/api/review/byProduct/603f519c245f4018275b73f1 \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEyQGEucnUiLCJpYXQiOjE2MTQ3ODM5Njh9.qME9vjdg4P_2xDJOAHDXPAdXKNtfncNSjlEy6g-nuTA'
 ```
+
+# Авторизация
+## Login
+``` bash
+curl --request POST \
+  --url http://localhost:3000/api/auth/login \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"login": "as@a.ru",
+	"password": "1"
+}'
+```
+
+## Register
+``` bash
+curl --request POST \
+  --url 'https://localhost:3000/api/auth/register?%D0%B2%D1%88=' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"login": "silf42@mail.ru",
+	"password": "max789789"
+}'
+```
