@@ -5,5 +5,7 @@ export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
     register(dto: AuthDto): Promise<import("mongoose").Document>;
-    login(dto: AuthDto): Promise<void>;
+    login({ login, password }: AuthDto): Promise<{
+        access_token: string;
+    }>;
 }

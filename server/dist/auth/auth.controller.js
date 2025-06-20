@@ -28,7 +28,9 @@ let AuthController = class AuthController {
         }
         return this.authService.createUser(dto);
     }
-    async login(dto) {
+    async login({ login, password }) {
+        const { email } = await this.authService.validateUser(login, password);
+        return this.authService.login(email);
     }
 };
 __decorate([
@@ -40,6 +42,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.HttpCode)(200),
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
