@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewController = void 0;
 const common_1 = require("@nestjs/common");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 const create_review_dto_1 = require("./dto/create-review.dto");
 const review_constants_1 = require("./review.constants");
 const review_service_1 = require("./review.service");
@@ -43,6 +44,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "create", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
