@@ -11,9 +11,10 @@ export class ProductService {
   // @ts-ignore
 	constructor(@InjectModel(ProductModel) private readonly productModel: ModelType<ProductModel>) { }
 
-	async create(dto: CreateProductDto) {
-		return this.productModel.create(dto);
-	}
+async create(dto: CreateProductDto) {
+	const createdProduct = new this.productModel(dto);
+	return createdProduct.save();
+}
 
 	async findById(id: string) {
 		return this.productModel.findById(id).exec();

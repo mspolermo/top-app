@@ -1,9 +1,18 @@
+/// <reference types="mongoose" />
+import { CreateProductDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
 import { ProductModel } from './product.model';
+import { ProductService } from './product.service';
 export declare class ProductController {
-    create(dto: Omit<ProductModel, '_id'>): Promise<void>;
-    get(id: string): Promise<void>;
+    private readonly productService;
+    constructor(productService: ProductService);
+    create(dto: CreateProductDto): Promise<import("mongoose").Document>;
+    get(id: string): Promise<import("@typegoose/typegoose").DocumentType<ProductModel>>;
     delete(id: string): Promise<void>;
-    patch(id: string, dto: ProductModel): Promise<void>;
-    find(dto: FindProductDto): Promise<void>;
+    patch(id: string, dto: ProductModel): Promise<import("@typegoose/typegoose").DocumentType<ProductModel>>;
+    find(dto: FindProductDto): Promise<(ProductModel & {
+        review: import("../review/review.model").ReviewModel[];
+        reviewCount: number;
+        reviewAvg: number;
+    })[]>;
 }

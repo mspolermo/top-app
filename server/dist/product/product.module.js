@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
 const product_controller_1 = require("./product.controller");
 const product_model_1 = require("./product.model");
+const product_service_1 = require("./product.service");
 let ProductModule = class ProductModule {
 };
 ProductModule = __decorate([
@@ -25,7 +26,8 @@ ProductModule = __decorate([
                     }
                 }
             ])
-        ]
+        ],
+        providers: [product_service_1.ProductService]
     })
 ], ProductModule);
 exports.ProductModule = ProductModule;

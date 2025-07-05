@@ -46,10 +46,6 @@ __decorate([
 ], ProductModel.prototype, "credit", void 0);
 __decorate([
     (0, typegoose_1.prop)(),
-    __metadata("design:type", Number)
-], ProductModel.prototype, "calculatedRating", void 0);
-__decorate([
-    (0, typegoose_1.prop)(),
     __metadata("design:type", String)
 ], ProductModel.prototype, "description", void 0);
 __decorate([
