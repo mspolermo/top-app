@@ -19,6 +19,7 @@ const find_product_dto_1 = require("./dto/find-product.dto");
 const product_constants_1 = require("./product.constants");
 const product_model_1 = require("./product.model");
 const product_service_1 = require("./product.service");
+const id_validation_pipe_1 = require("../pipes/id-validation.pipe");
 let ProductController = class ProductController {
     constructor(productService) {
         this.productService = productService;
@@ -59,21 +60,21 @@ __decorate([
 ], ProductController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "get", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "delete", null);
 __decorate([
     (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, product_model_1.ProductModel]),

@@ -63,13 +63,13 @@ curl --request POST \
 ## GetProduct
 ``` bash
 curl --request GET \
-  --url http://localhost:3000/api/product/6040de091a2ac332d80ca788
+  --url http://localhost:3000/api/product/686b82e9466862b9651bed65
 ```
 
 ## DeleteProduct
 ``` bash
 curl --request DELETE \
-  --url http://localhost:3000/api/product/6041f77bb3e24b1e15e98d37
+  --url http://localhost:3000/api/product/686b82e9466862b9651bed65
 ```
 
 ## FindProduct

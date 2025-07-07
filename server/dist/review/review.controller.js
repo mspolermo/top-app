@@ -18,6 +18,7 @@ const jwt_guard_1 = require("../auth/guards/jwt.guard");
 const create_review_dto_1 = require("./dto/create-review.dto");
 const review_constants_1 = require("./review.constants");
 const review_service_1 = require("./review.service");
+const id_validation_pipe_1 = require("../pipes/id-validation.pipe");
 let ReviewController = class ReviewController {
     constructor(reviewService) {
         this.reviewService = reviewService;
@@ -46,14 +47,14 @@ __decorate([
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "delete", null);
 __decorate([
     (0, common_1.Get)('byProduct/:productId'),
-    __param(0, (0, common_1.Param)('productId')),
+    __param(0, (0, common_1.Param)('productId', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
