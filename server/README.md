@@ -175,7 +175,7 @@ curl --request POST \
 ## UpdatePage
 ``` bash
 curl --request PATCH \
-  --url http://localhost:3000/api/top-page/604f7babada281374d4495e3 \
+  --url http://localhost:3000/api/top-page/6871d7ae5a25784d15c581b0 \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAYS5ydSIsImlhdCI6MTYxNDk0MjAyM30.Z_eBo7maSqRhfCPt6fCTFRsKk7I-jgpFBoSjezg5Yrk' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -185,7 +185,7 @@ curl --request PATCH \
     "фото",
     "видео"
   ],
-  "_id": "604f7babada281374d4495e3",
+  "_id": "6871d7ae5a25784d15c581b0",
   "firstCategory": 0,
   "secondCategory": "Графический дизайн",
   "alias": "photoshop-alias",

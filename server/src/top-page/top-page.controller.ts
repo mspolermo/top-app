@@ -17,19 +17,21 @@ export class TopPageController {
 		return this.topPageService.create(dto);
 	}
 
-	@UseGuards(JwtAuthGuard)
-	@Get(':id')
-	async get(@Param('id', IdValidationPipe) id: string) {
-		const page = await this.topPageService.findById(id);
+
+
+	@Get('byAlias/:alias')
+	async getByAlias(@Param('alias') alias: string) {
+		const page = await this.topPageService.findByAlias(alias);
 		if (!page) {
 			throw new NotFoundException(NOT_FOUND_TOP_PAGE_ERROR);
 		}
 		return page;
 	}
 
-	@Get('byAlias/:alias')
-	async getByAlias(@Param('alias') alias: string) {
-		const page = await this.topPageService.findByAlias(alias);
+	@UseGuards(JwtAuthGuard)
+	@Get(':id')
+	async get(@Param('id', IdValidationPipe) id: string) {
+		const page = await this.topPageService.findById(id);
 		if (!page) {
 			throw new NotFoundException(NOT_FOUND_TOP_PAGE_ERROR);
 		}

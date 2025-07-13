@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
 const top_page_controller_1 = require("./top-page.controller");
 const top_page_model_1 = require("./top-page.model");
+const top_page_service_1 = require("./top-page.service");
 let TopPageModule = class TopPageModule {
 };
 TopPageModule = __decorate([
@@ -25,7 +26,8 @@ TopPageModule = __decorate([
                     }
                 }
             ])
-        ]
+        ],
+        providers: [top_page_service_1.TopPageService]
     })
 ], TopPageModule);
 exports.TopPageModule = TopPageModule;
