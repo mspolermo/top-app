@@ -10,8 +10,7 @@ export class TopPageService {
 	constructor(@InjectModel(TopPageModel) private readonly topPageModel: ModelType<TopPageModel>) { }
 
 	async create(dto: CreateTopPageDto) {
-    const createdPage = new this.topPageModel(dto);
-    return createdPage.save();
+		return this.topPageModel.create(dto);
 	}
 
 	async findById(id: string) {
@@ -23,7 +22,11 @@ export class TopPageService {
 	}
 
 	async findByCategory(firstCategory: TopLevelCategory) {
-		return this.topPageModel.find({ firstCategory }, { alias: 1, secondCategory: 1, title: 1 }).exec();
+		return this.topPageModel.find({ firstCategory }, { alias: 1, secondCategory: 1, title: 1, category: 1 }).exec();
+	}
+
+	async findByText(text: string) {
+		return this.topPageModel.find({ $text: { $search: text, $caseSensitive: false } }).exec();
 	}
 
 	async deleteById(id: string) {
