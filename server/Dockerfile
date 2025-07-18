@@ -1,5 +1,6 @@
 FROM node:14-alpine
 WORKDIR /opt/app
+RUN apk add --no-cache ca-certificates && update-ca-certificates
 ADD package.json package.json
 RUN npm install
 ADD . .
