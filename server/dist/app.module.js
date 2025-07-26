@@ -15,6 +15,7 @@ const review_module_1 = require("./review/review.module");
 const config_1 = require("@nestjs/config");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
 const mongo_config_1 = require("./configs/mongo.config");
+const files_module_1 = require("./files/files.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,7 +30,8 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             top_page_module_1.TopPageModule,
             product_module_1.ProductModule,
-            review_module_1.ReviewModule
+            review_module_1.ReviewModule,
+            files_module_1.FilesModule
         ]
     })
 ], AppModule);

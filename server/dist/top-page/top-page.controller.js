@@ -27,15 +27,15 @@ let TopPageController = class TopPageController {
     async create(dto) {
         return this.topPageService.create(dto);
     }
-    async getByAlias(alias) {
-        const page = await this.topPageService.findByAlias(alias);
+    async get(id) {
+        const page = await this.topPageService.findById(id);
         if (!page) {
             throw new common_1.NotFoundException(top_page_constants_1.NOT_FOUND_TOP_PAGE_ERROR);
         }
         return page;
     }
-    async get(id) {
-        const page = await this.topPageService.findById(id);
+    async getByAlias(alias) {
+        const page = await this.topPageService.findByAlias(alias);
         if (!page) {
             throw new common_1.NotFoundException(top_page_constants_1.NOT_FOUND_TOP_PAGE_ERROR);
         }
@@ -57,22 +57,19 @@ let TopPageController = class TopPageController {
     async find(dto) {
         return this.topPageService.findByCategory(dto.firstCategory);
     }
+    async textSearch(text) {
+        return this.topPageService.findByText(text);
+    }
 };
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_top_page_dto_1.CreateTopPageDto]),
     __metadata("design:returntype", Promise)
 ], TopPageController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)('byAlias/:alias'),
-    __param(0, (0, common_1.Param)('alias')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], TopPageController.prototype, "getByAlias", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Get)(':id'),
@@ -81,6 +78,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TopPageController.prototype, "get", null);
+__decorate([
+    (0, common_1.Get)('byAlias/:alias'),
+    __param(0, (0, common_1.Param)('alias')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TopPageController.prototype, "getByAlias", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
@@ -91,6 +95,7 @@ __decorate([
 ], TopPageController.prototype, "delete", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -107,6 +112,13 @@ __decorate([
     __metadata("design:paramtypes", [find_top_page_dto_1.FindTopPageDto]),
     __metadata("design:returntype", Promise)
 ], TopPageController.prototype, "find", null);
+__decorate([
+    (0, common_1.Get)('textSearch/:text'),
+    __param(0, (0, common_1.Param)('text')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TopPageController.prototype, "textSearch", null);
 TopPageController = __decorate([
     (0, common_1.Controller)('top-page'),
     __metadata("design:paramtypes", [top_page_service_1.TopPageService])

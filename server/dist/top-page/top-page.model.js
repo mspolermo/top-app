@@ -49,8 +49,8 @@ __decorate([
     __metadata("design:type", String)
 ], TopPageAdvantage.prototype, "description", void 0);
 exports.TopPageAdvantage = TopPageAdvantage;
-class TopPageModel extends defaultClasses_1.TimeStamps {
-}
+let TopPageModel = class TopPageModel extends defaultClasses_1.TimeStamps {
+};
 __decorate([
     (0, typegoose_1.prop)({ enum: TopLevelCategory }),
     __metadata("design:type", Number)
@@ -67,6 +67,14 @@ __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", String)
 ], TopPageModel.prototype, "title", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", String)
+], TopPageModel.prototype, "metaTitle", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", String)
+], TopPageModel.prototype, "metaDescription", void 0);
 __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", String)
@@ -91,5 +99,8 @@ __decorate([
     (0, typegoose_1.prop)({ type: () => [String] }),
     __metadata("design:type", Array)
 ], TopPageModel.prototype, "tags", void 0);
+TopPageModel = __decorate([
+    (0, typegoose_1.index)({ '$**': 'text' })
+], TopPageModel);
 exports.TopPageModel = TopPageModel;
 //# sourceMappingURL=top-page.model.js.map

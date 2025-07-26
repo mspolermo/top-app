@@ -22,6 +22,8 @@ export declare class TopPageModel extends TimeStamps {
     secondCategory: string;
     alias: string;
     title: string;
+    metaTitle: string;
+    metaDescription: string;
     category: string;
     hh?: HhData;
     advantages: TopPageAdvantage[];
