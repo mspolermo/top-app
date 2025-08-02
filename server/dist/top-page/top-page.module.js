@@ -25,9 +25,10 @@ TopPageModule = __decorate([
                         collection: 'TopPage'
                     }
                 }
-            ])
+            ]),
         ],
-        providers: [top_page_service_1.TopPageService]
+        providers: [top_page_service_1.TopPageService],
+        exports: [top_page_service_1.TopPageService]
     })
 ], TopPageModule);
 exports.TopPageModule = TopPageModule;
