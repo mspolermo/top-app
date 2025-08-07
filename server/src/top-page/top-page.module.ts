@@ -14,7 +14,7 @@ import { TopPageService } from './top-page.service';
 					collection: 'TopPage'
 				}
 			}
-		]),
+		])
 	],
 	providers: [TopPageService],
 	exports: [TopPageService]
