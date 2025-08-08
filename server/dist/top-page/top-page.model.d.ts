@@ -10,6 +10,7 @@ export declare class HhData {
     juniorSalary: number;
     middleSalary: number;
     seniorSalary: number;
+    updatedAt: Date;
 }
 export declare class TopPageAdvantage {
     title: string;

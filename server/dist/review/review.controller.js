@@ -14,17 +14,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewController = void 0;
 const common_1 = require("@nestjs/common");
+const id_validation_pipe_1 = require("../pipes/id-validation.pipe");
+const telegram_service_1 = require("../telegram/telegram.service");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
 const create_review_dto_1 = require("./dto/create-review.dto");
 const review_constants_1 = require("./review.constants");
 const review_service_1 = require("./review.service");
-const id_validation_pipe_1 = require("../pipes/id-validation.pipe");
 let ReviewController = class ReviewController {
-    constructor(reviewService) {
+    constructor(reviewService, telegramService) {
         this.reviewService = reviewService;
+        this.telegramService = telegramService;
     }
     async create(dto) {
         return this.reviewService.create(dto);
+    }
+    async notify(dto) {
+        const message = `Имя: ${dto.name}\n`
+            + `Заголовок: ${dto.title}\n`
+            + `Описание: ${dto.description}\n`
+            + `Рейтинг: ${dto.rating}\n`
+            + `ID Продукта: ${dto.productId}`;
+        return this.telegramService.sendMessage(message);
     }
     async delete(id) {
         const deletedDoc = await this.reviewService.delete(id);
@@ -45,6 +55,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "create", null);
 __decorate([
+    (0, common_1.UsePipes)(new common_1.ValidationPipe()),
+    (0, common_1.Post)('notify'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
+    __metadata("design:returntype", Promise)
+], ReviewController.prototype, "notify", null);
+__decorate([
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
@@ -61,7 +79,8 @@ __decorate([
 ], ReviewController.prototype, "getByProduct", null);
 ReviewController = __decorate([
     (0, common_1.Controller)('review'),
-    __metadata("design:paramtypes", [review_service_1.ReviewService])
+    __metadata("design:paramtypes", [review_service_1.ReviewService,
+        telegram_service_1.TelegramService])
 ], ReviewController);
 exports.ReviewController = ReviewController;
 //# sourceMappingURL=review.controller.js.map

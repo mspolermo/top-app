@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewModule = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
+const telegram_module_1 = require("../telegram/telegram.module");
 const review_controller_1 = require("./review.controller");
 const review_model_1 = require("./review.model");
 const review_service_1 = require("./review.service");
@@ -25,7 +26,8 @@ ReviewModule = __decorate([
                         collection: 'Review'
                     }
                 }
-            ])
+            ]),
+            telegram_module_1.TelegramModule
         ],
         providers: [review_service_1.ReviewService]
     })

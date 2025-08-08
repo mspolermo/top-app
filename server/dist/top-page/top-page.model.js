@@ -37,6 +37,10 @@ __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", Number)
 ], HhData.prototype, "seniorSalary", void 0);
+__decorate([
+    (0, typegoose_1.prop)(),
+    __metadata("design:type", Date)
+], HhData.prototype, "updatedAt", void 0);
 exports.HhData = HhData;
 class TopPageAdvantage {
 }

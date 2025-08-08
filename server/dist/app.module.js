@@ -16,7 +16,9 @@ const config_1 = require("@nestjs/config");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
 const mongo_config_1 = require("./configs/mongo.config");
 const files_module_1 = require("./files/files.module");
-const sitemap_module_1 = require("./sitemap/sitemap.module");
+const telegram_module_1 = require("./telegram/telegram.module");
+const telegram_config_1 = require("./configs/telegram.config");
+const hh_module_1 = require("./hh/hh.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -33,7 +35,12 @@ AppModule = __decorate([
             product_module_1.ProductModule,
             review_module_1.ReviewModule,
             files_module_1.FilesModule,
-            sitemap_module_1.SitemapModule
+            telegram_module_1.TelegramModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                inject: [config_1.ConfigService],
+                useFactory: telegram_config_1.getTelegramConfig
+            }),
+            hh_module_1.HhModule
         ]
     })
 ], AppModule);

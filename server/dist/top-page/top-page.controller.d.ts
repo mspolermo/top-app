@@ -1,11 +1,10 @@
-/// <reference types="mongoose" />
 import { CreateTopPageDto } from './dto/create-top-page.dto';
 import { FindTopPageDto } from './dto/find-top-page.dto';
 import { TopPageService } from './top-page.service';
 export declare class TopPageController {
     private readonly topPageService;
     constructor(topPageService: TopPageService);
-    create(dto: CreateTopPageDto): Promise<import("mongoose").Document>;
+    create(dto: CreateTopPageDto): Promise<import("@typegoose/typegoose").DocumentType<import("./top-page.model").TopPageModel>>;
     get(id: string): Promise<import("@typegoose/typegoose").DocumentType<import("./top-page.model").TopPageModel>>;
     getByAlias(alias: string): Promise<import("@typegoose/typegoose").DocumentType<import("./top-page.model").TopPageModel>>;
     delete(id: string): Promise<void>;

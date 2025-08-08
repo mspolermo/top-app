@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TopPageModule = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_typegoose_1 = require("nestjs-typegoose");
+const hh_module_1 = require("../hh/hh.module");
 const top_page_controller_1 = require("./top-page.controller");
 const top_page_model_1 = require("./top-page.model");
 const top_page_service_1 = require("./top-page.service");
@@ -26,9 +27,9 @@ TopPageModule = __decorate([
                     }
                 }
             ]),
+            hh_module_1.HhModule
         ],
         providers: [top_page_service_1.TopPageService],
-        exports: [top_page_service_1.TopPageService]
     })
 ], TopPageModule);
 exports.TopPageModule = TopPageModule;
