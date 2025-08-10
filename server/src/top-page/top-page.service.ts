@@ -12,7 +12,8 @@ export class TopPageService {
 	constructor(@InjectModel(TopPageModel) private readonly topPageModel: ModelType<TopPageModel>) { }
 
 	async create(dto: CreateTopPageDto) {
-		return this.topPageModel.create(dto);
+		const createdPage = new this.topPageModel(dto);
+		return createdPage.save();
 	}
 
 	async findById(id: string) {
@@ -21,6 +22,10 @@ export class TopPageService {
 
 	async findByAlias(alias: string) {
 		return this.topPageModel.findOne({ alias }).exec();
+	}
+
+		async findAll() {
+		return this.topPageModel.find({}).exec();
 	}
 
 	async findByCategory(firstCategory: TopLevelCategory) {

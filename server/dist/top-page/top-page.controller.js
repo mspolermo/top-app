@@ -14,15 +14,19 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TopPageController = void 0;
 const common_1 = require("@nestjs/common");
+const schedule_1 = require("@nestjs/schedule");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
+const hh_service_1 = require("../hh/hh.service");
 const id_validation_pipe_1 = require("../pipes/id-validation.pipe");
 const create_top_page_dto_1 = require("./dto/create-top-page.dto");
 const find_top_page_dto_1 = require("./dto/find-top-page.dto");
 const top_page_constants_1 = require("./top-page.constants");
 const top_page_service_1 = require("./top-page.service");
 let TopPageController = class TopPageController {
-    constructor(topPageService) {
+    constructor(topPageService, hhService, scheduleRegistry) {
         this.topPageService = topPageService;
+        this.hhService = hhService;
+        this.scheduleRegistry = scheduleRegistry;
     }
     async create(dto) {
         return this.topPageService.create(dto);
@@ -59,6 +63,14 @@ let TopPageController = class TopPageController {
     }
     async textSearch(text) {
         return this.topPageService.findByText(text);
+    }
+    async test() {
+        const data = await this.topPageService.findForHhUpdate(new Date());
+        for (let page of data) {
+            const hhData = await this.hhService.getData(page.category);
+            page.hh = hhData;
+            await this.topPageService.updateById(page._id, page);
+        }
     }
 };
 __decorate([
@@ -119,9 +131,17 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TopPageController.prototype, "textSearch", null);
+__decorate([
+    (0, schedule_1.Cron)(schedule_1.CronExpression.EVERY_DAY_AT_MIDNIGHT),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], TopPageController.prototype, "test", null);
 TopPageController = __decorate([
     (0, common_1.Controller)('top-page'),
-    __metadata("design:paramtypes", [top_page_service_1.TopPageService])
+    __metadata("design:paramtypes", [top_page_service_1.TopPageService,
+        hh_service_1.HhService,
+        schedule_1.SchedulerRegistry])
 ], TopPageController);
 exports.TopPageController = TopPageController;
 //# sourceMappingURL=top-page.controller.js.map
